@@ -6,5 +6,60 @@ html(lang='en')
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="styles/main.css")
   body
-    h1 #{ message }
+    .app
+      header.header
+        .container
+          .header__wrapper
+            .header__text
+              h1.header__title
+                | Travel with Andrew
+              h3.header__subtitle
+                | Just a little web-application where I can show you how I know Nest JS and help you buy tickets to any corner of the world
+            .header__img
+              img(src='img/airplane.jpg' alt='airplane')
+
+      section.section
+        .container
+          .section__title
+            | Наши самые красивые места
+          .tickets
+            .ticket__card
+              .ticket__img
+                a(href='/ticket/1')
+                  img(src='img/maden.jpg' alt='maden')
+              .ticket__text
+                a(href='/ticket/1')
+                  .ticket__title Залив Маден
+                .ticket__description Любители кемпинга сбегают сюда от городской суеты и толп туристов. Без регистрации и СМС вы получите чистое море, аромат хвои, редкие встречи с попутчиками и полное погружение в природу. Ищите залив на Ликийской тропе между Текирова (Кемер) и пляжем Чиралы.
+              .ticket__cost 1500$
+            .ticket__card
+              .ticket__img
+                a(href='/ticket/2')
+                  img(src='img/piter.jpg' alt='piter')
+              .ticket__text
+                a(href='/ticket/2')
+                  .ticket__title Парк Александрия
+                .ticket__description Программа для тех, кто уже насмотрелся на фонтаны в Петергофе. Сначала идём на экскурсию во дворец Коттедж, потом катаемся на паровозике по дубовым аллеям и любуемся готической капеллой. Рядом с ней есть чугунный колодец — не из «Звонка», но тоже жутковатый. Бутылка воды и сэндвич с собой будут очень кстати: перекусить в парке негде.
+              .ticket__cost 1500$
+
+            .ticket__card
+              .ticket__img
+                a(href='/ticket/3')
+                  img(src='img/mechet.jpg' alt='mechet')
+              .ticket__text
+                a(href='/ticket/3')
+                  .ticket__title Мечеть Султанахмет
+                .ticket__description Самое фотогеничное здание и самая известная мечеть Стамбула аж с шестью минаретами! Больше только у главного мусульманского храма в Медине. Чтобы понять, почему Султанахмет называют Голубой мечетью, надо зайти внутрь.
+              .ticket__cost 1500$
+
+            .ticket__card
+              .ticket__img
+                a(href='/ticket/4')
+                  img(src='img/maftalin.jpg' alt='maftalin')
+              .ticket__text
+                a(href='/ticket/4')
+                  .ticket__title Кафе Naftalin K
+                .ticket__description Микс кофейни и винтажного магазина. В меню больше 10 видов кофе по-турецки: со специями, козьим молоком и другими добавками. Есть и привычная европейская классика на эспрессо, но сюда стоит зайти именно за национальным колоритом. Интерьер аутентичный: антикварная мебель и вязанные крючком скатерти.
+              .ticket__cost 1500$
