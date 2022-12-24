@@ -1,16 +1,20 @@
-import { NestFactory } from '@nestjs/core';
-import { NestExpressApplication } from '@nestjs/platform-express';
-import { AppModule } from './app.module';
-import { join } from 'path';
+import {NestFactory} from '@nestjs/core';
+import {AppModule} from './app.module';
+import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+    const app = await NestFactory.create(AppModule);
+    app.enableCors();
 
-  app.useStaticAssets(join(__dirname, '..', 'assets'));
-  app.setBaseViewsDir(join(__dirname, '..', 'views'));
-  app.setViewEngine('pug');
+    const config = new DocumentBuilder()
+        .setTitle('JIRA')
+        .setDescription('The jira API description')
+        .setVersion('1.0')
+        .build();
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('swagger/api', app, document);
 
-  await app.listen(3000);
+    await app.listen(3000);
 }
 
 bootstrap();

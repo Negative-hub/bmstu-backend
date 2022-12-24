@@ -6,19 +6,10 @@ html(lang='en')
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet" href="styles/main.css")
+    link(rel="stylesheet" href="/styles/main.css")
   body
     .app
-      header.header
-        .container
-          .header__wrapper
-            .header__text
-              h1.header__title
-                | Travel with Andrew
-              h3.header__subtitle
-                | Just a little web-application where I can show you how I know Nest JS and help you buy tickets to any corner of the world
-            .header__img
-              img(src='img/airplane.jpg' alt='airplane')
+      include header.pug
 
       section.section
         .container
@@ -60,6 +51,6 @@ html(lang='en')
                   img(src='img/maftalin.jpg' alt='maftalin')
               .ticket__text
                 a(href='/ticket/4')
-                  .ticket__title Кафе Naftalin K
+                  .ticket__title Кафе Naftalin
                 .ticket__description Микс кофейни и винтажного магазина. В меню больше 10 видов кофе по-турецки: со специями, козьим молоком и другими добавками. Есть и привычная европейская классика на эспрессо, но сюда стоит зайти именно за национальным колоритом. Интерьер аутентичный: антикварная мебель и вязанные крючком скатерти.
               .ticket__cost 1500$
