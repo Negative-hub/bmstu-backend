@@ -57,7 +57,7 @@ export class UsersServices {
         if (user) {
             return this.userRepository.update({id}, {...user, ...data})
         } else {
-            new Promise((resolve, reject) => reject())
+            return new Promise((resolve, reject) => reject())
         }
     }
 

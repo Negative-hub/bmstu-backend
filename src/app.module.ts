@@ -9,12 +9,14 @@ import {TasksUsers} from "./entities/tasks_users";
 import {UsersModule} from "./users/users.module";
 import {ColumnsModule} from "./columns/columns.module";
 import {TasksModule} from "./tasks/tasks.module";
+import {AuthModule} from "./auth/auth.module";
 
 @Module({
     imports: [
         UsersModule,
         ColumnsModule,
         TasksModule,
+        AuthModule,
         TypeOrmModule.forRoot({
             type: 'mysql',
             host: 'localhost',

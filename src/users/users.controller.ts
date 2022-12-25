@@ -15,7 +15,7 @@ import {Response} from 'express'
 import {ApiBody, ApiOperation, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('api/users')
-@Controller('users')
+@Controller('api/users')
 export class UsersController {
     constructor(private readonly userServices: UsersServices) {}
     @Get()
