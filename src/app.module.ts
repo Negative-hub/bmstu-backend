@@ -17,6 +17,7 @@ import {AuthModule} from "./auth/auth.module";
         ColumnsModule,
         TasksModule,
         AuthModule,
+        TypeOrmModule.forFeature([ColumnTask]),
         TypeOrmModule.forRoot({
             type: 'mysql',
             host: 'localhost',

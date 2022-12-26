@@ -127,4 +127,13 @@ img {
     font-weight: 700;
 }
 
+.column {
+    display: flex;
+    gap: 0 10px;
+    font-size: 18px;
+}
+
+.column span {
+    width: 100px;
+}
 
