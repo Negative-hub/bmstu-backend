@@ -6,7 +6,7 @@ import {
     Delete,
     Param,
     Body,
-    Res, UseGuards,
+    Res, UseGuards, Query,
 } from "@nestjs/common";
 import {TasksServices} from "./tasks.services";
 import {Response} from 'express'
@@ -22,8 +22,8 @@ export class TasksController {
 
     @Get()
     @ApiOperation({description: 'Получение всех задач', summary: 'Получение всех задач'})
-    getUserTasks() {
-        return this.tasksServices.getTasksByUser()
+    getUserTasks(@Query('query') query: string) {
+        return this.tasksServices.getTasksByUser(query)
     }
 
     @Post()

@@ -23,13 +23,15 @@ export class TasksServices {
     }
 
     // GET ALL TASKS
-    async getTasksByUser(): Promise<ColumnTask[]> {
+    async getTasksByUser(query: string): Promise<ColumnTask[]> {
         return await this.columnRepository
             .createQueryBuilder('column')
-            .select(['column.id', 'column.title', 'column.description'])
+            .select(['column.id', 'column.title', 'column.description', 'user.name', 'user.id', 'user.email'])
             .leftJoinAndMapMany('column.tasks', 'column.task', 'task')
+            .where("task.title like :query", {query: `%${query || ''}%`})
             .leftJoinAndMapMany('task.pivot', 'task.id', 'tasks_users')
             .leftJoinAndSelect('tasks_users.user', 'user')
+            .orderBy('column.id')
             .getMany()
     }
 
