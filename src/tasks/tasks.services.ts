@@ -28,7 +28,7 @@ export class TasksServices {
             .createQueryBuilder('column')
             .select(['column.id', 'column.title', 'column.description'])
             .leftJoinAndMapMany('column.tasks', 'column.task', 'task')
-            .leftJoinAndMapOne('task.pivot', 'task.id', 'tasks_users')
+            .leftJoinAndMapMany('task.pivot', 'task.id', 'tasks_users')
             .leftJoinAndSelect('tasks_users.user', 'user')
             .getMany()
     }
@@ -62,6 +62,15 @@ export class TasksServices {
         })
 
         return this.taskRepository.findOneBy({id: data.id})
+    }
+
+    async deleteUserFromTask(id: number): Promise<DeleteResult> {
+        return await this.tasksUsersRepository
+            .createQueryBuilder('tasksUsers')
+            .delete()
+            .from(TasksUsers)
+            .where('id = :id', {id})
+            .execute()
     }
 
     async deleteTask(id: number): Promise<DeleteResult> {

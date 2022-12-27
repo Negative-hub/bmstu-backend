@@ -21,7 +21,6 @@ import {AuthGuard} from "../guards/auth.guard";
 export class UsersController {
     constructor(private readonly userServices: UsersServices) {}
     @Get()
-    @UseGuards(AuthGuard)
     @ApiOperation({description: 'Получение всех пользователей', summary: 'Получение всех пользователей'})
     getUsers() {
         return this.userServices.getUsers()
@@ -37,7 +36,7 @@ export class UsersController {
     @Post()
     @UseGuards(AuthGuard)
     @ApiOperation({description: 'Создание пользователя', summary: 'Создание пользователя'})
-    @ApiBody({type: CreateUserDto, description: '12412'})
+    @ApiBody({type: CreateUserDto})
     createUser(@Body() createUserDto: CreateUserDto) {
         return this.userServices.createUser(createUserDto)
     }

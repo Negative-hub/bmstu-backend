@@ -35,15 +35,26 @@ export class TasksController {
     }
 
     @Put(':id')
+    @UseGuards(AuthGuard)
     @ApiOperation({description: 'Редактирование задачи', summary: 'Редактирование задачи'})
     @ApiBody({type: updateTaskDto})
-    updateUser(@Body() updateUserDto: updateTaskDto) {
+    updateTask(@Body() updateUserDto: updateTaskDto) {
         return this.tasksServices.updateTask(updateUserDto)
     }
 
+    @Delete('/users/:id')
+    @UseGuards(AuthGuard)
+    @ApiOperation({description: 'Удаление юзера из задачи', summary: 'Удаление юзера из задачи'})
+    deleteUserFromTask(@Param('id') id: number, @Res() res: Response) {
+        this.tasksServices.deleteUserFromTask(id)
+            .then(() => res.sendStatus(200))
+            .catch(() => res.sendStatus(400))
+    }
+
     @Delete(':id')
+    @UseGuards(AuthGuard)
     @ApiOperation({description: 'Удаление задачи', summary: 'Удаление задачи'})
-    deleteUser(@Param('id') id: number, @Res() res: Response) {
+    deleteTask(@Param('id') id: number, @Res() res: Response) {
         this.tasksServices.deleteTask(id)
             .then(() => res.sendStatus(200))
             .catch(() => res.sendStatus(400))

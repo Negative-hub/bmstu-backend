@@ -19,12 +19,12 @@ export class ColumnsServices {
 
     // CREATE COLUMN
     async createColumn(data: CreateColumnDto): Promise<ColumnTask> {
-        return await this.columnRepository.save(data)
+        return this.columnRepository.save(data)
     }
 
     // UPDATE COLUMN
     async updateColumn({id, ...data}: UpdateColumnDto): Promise<UpdateResult> {
-        const column = this.columnRepository.findOneBy({id})
+        const column = await this.columnRepository.findOneBy({id})
 
         if (column) {
             return this.columnRepository.update({id}, {...column, ...data})
