@@ -29,7 +29,7 @@ export class AuthController {
             const user = await this.authService.validateUser(userData)
 
             const uuid = uuidv4()
-            await this.cacheManager.set(uuid, `${user}`, {ttl: 0})
+            await this.cacheManager.set(uuid, JSON.stringify(user), {ttl: 0})
 
             response.cookie('session_id', uuid, {httpOnly: true, secure: true, sameSite: 'none'})
 

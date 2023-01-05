@@ -20,4 +20,8 @@ export class User {
   @ApiProperty()
   @Column({nullable: false})
   password: string
+
+  @ApiProperty()
+  @Column({default: false, nullable: false})
+  is_moderator: boolean
 }

@@ -22,8 +22,16 @@ export class TasksController {
 
     @Get()
     @ApiOperation({description: 'Получение всех задач', summary: 'Получение всех задач'})
-    getUserTasks(@Query('query') query: string) {
-        return this.tasksServices.getTasksByUser(query)
+    getAllTasks(@Query('query') query: string) {
+        return this.tasksServices.getAllTasks(query)
+    }
+    @Get('/users/:id')
+    @ApiOperation({description: 'Получение всех задач пользователя', summary: 'Получение всех задач пользователя'})
+    async getUserTasks(
+        @Param('id') id: number,
+        @Query('query') query: string,
+    ) {
+        return this.tasksServices.getTasksByUser(query, id)
     }
 
     @Post()
