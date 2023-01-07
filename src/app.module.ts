@@ -32,7 +32,7 @@ import type {ClientOpts} from 'redis'
         }),
         CacheModule.register<ClientOpts>({
             store: redisStore,
-            host: '127.0.0.1',
+            host: 'localhost',
             port: 6379,
             ttl: 0,
             isGlobal: true,

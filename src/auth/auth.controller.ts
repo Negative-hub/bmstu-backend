@@ -31,6 +31,7 @@ export class AuthController {
             const uuid = uuidv4()
             await this.cacheManager.set(uuid, JSON.stringify(user), {ttl: 0})
 
+            console.log(this.cacheManager.store.keys())
             response.cookie('session_id', uuid, {httpOnly: true, secure: true, sameSite: 'none'})
 
             return user
